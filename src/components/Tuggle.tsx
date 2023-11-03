@@ -1,24 +1,28 @@
+"use client"
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const Tuggle = () => {
+ const [theme, setTheme] = useState(
+    localStorage.getItem('theme') ? localStorage.getItem('theme' || '') : 'light'
+  );
+
+  const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newTheme = e.target.checked ? 'dark' : 'light';
+    setTheme(newTheme);
+  };
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme || '');
+    const localTheme = localStorage.getItem('theme');
+    document.querySelector("html")?.setAttribute("data-theme", localTheme || '');
+  }, [theme]);
+
+
    
-    const [theme, setTheme] = useState(
-        localStorage.getItem('theme') ? localStorage.getItem('theme' || '') : 'light'
-      );
-    
-      const handleToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newTheme = e.target.checked ? 'dark' : 'light';
-        setTheme(newTheme);
-      };
-    
-      useEffect(() => {
-        localStorage.setItem('theme', theme || '');
-        const localTheme = localStorage.getItem('theme');
-        document.querySelector("html")?.setAttribute("data-theme", localTheme || '');
-      }, [theme]);
-    
     return (
+        
             <div className="navbar-end">
                 <label className="swap swap-rotate">
                 {/* this hidden checkbox controls the state */}
@@ -45,5 +49,5 @@ const Tuggle = () => {
       );
     }
     
-    export default Tuggle;
+export default Tuggle;
   
