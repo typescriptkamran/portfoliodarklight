@@ -1,19 +1,26 @@
-import React from 'react'
-import Image from 'next/image'
+import Image from "next/image";
 
-const Hero = () => {
+function Hero() {
   return (
-    <div className="hero min-h-screen bg-base-200">
-  <div className="hero-content flex-col lg:flex-row">
-    <img src="/images/stock/photo-1635805737707-575885ab0820.jpg" className="max-w-sm rounded-lg shadow-2xl" />
-    <div>
-      <h1 className="text-5xl font-bold">Box Office News!</h1>
-      <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-      <button className="btn btn-primary">Get Started</button>
-    </div>
-  </div>
-</div>
-  )
+    <header className="bg-hero bg-center bg-cover bg-no-repeat sm:p-16 py-16 px-8 flex justify-center lg:items-center max-lg:flex-col w-full sm:gap-16 gap-0">
+      <div className="flex-1 flex flex-col gap-10">
+        <Image
+          src="./logo.svg"
+          alt="logo"
+          width={101}
+          height={96}
+          className="object-contain"
+        />
+        <h1 className="sm:text-6xl text-5xl text-primary lg:max-w-lg font-bold leading-[120%]">
+          Explore The <span className="red-gradient">Diverse Realms</span> of
+          Anime Magic
+        </h1>
+      </div>
+      <div className="lg:flex-1 relative w-full h-[50vh] justify-center">
+        <Image src="/anime.png" alt="anime" fill className="object-contain" />
+      </div>
+    </header>
+  );
 }
 
-export default Hero
+export default Hero;

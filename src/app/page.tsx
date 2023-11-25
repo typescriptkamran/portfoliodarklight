@@ -1,15 +1,25 @@
-import Image from 'next/image'
-import NavBar from '@/components/NavBar'
-import Hero from '@/components/Hero'
+import AnimeCard, { AnimeProp } from "@/components/AnimeCard";
+import LoadMore from "../components/LoadMore";
+import { data } from "@/data/_data";
+import Hero from "@/components/Hero";
 
-
-export default function Home() {
+async function Home() {
   return (
-         
-    <main className="flex min-h-screen flex-col items-center justify-between 1 rem">
+    <div>
+    <main className="sm:p-16 py-16 px-8 flex flex-col gap-10">
       <Hero />
-      
+
+      <h2 className="text-3xl text-primary font-bold">Explore Anime</h2>
+
+      <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
+        {data.map((item: AnimeProp, index) => (
+          <AnimeCard key={item.id} anime={item} index={index} />
+        ))}
+      </section>
+      <LoadMore />
     </main>
-    
-  )
+    </div>
+  );
 }
+
+export default Home;
